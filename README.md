@@ -1,5 +1,5 @@
 # DataList
-Simple sort &amp; find PHP class for array &amp; multi-dimensional arrays 
+Basic querying &amp; sorting for PHP arrays.
 
 ```
 require_once("DataList.php");
@@ -62,6 +62,16 @@ $test->where('owns->type','furniture');
 $test->find();
 
 $people = $test->sort('name');
+
+```
+
+Numeric find:
+
+```
+$test->where('age','> 20');
+$test->find();
+
+$people = $test->sort('age');
 
 ```
 
