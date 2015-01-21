@@ -3,11 +3,7 @@ Basic querying &amp; sorting for PHP arrays.
 
 ```
 require_once("DataList.php");
-```
 
-Usage:
-
-```
 $testArray = array(
   array('name'=>'Anna','age'=>22,'owns'=> array('type'=>'furniture','label'=>'chair')),
   array('name'=>'Bill','age'=>12,'owns'=> array('type'=>'fruit','label'=>'apple')),
@@ -17,25 +13,30 @@ $testArray = array(
 $test = new DataList($testArray);
 ```
 
-Basic Sort:
+Basic Sort
+-------------------
 
 ```
 $people = $test->sort('name');
 ```
 
-Reverse:
+Reverse
+-------------------
 
 ```
 $people = $test->sort('name','DESC');
 ```
 
-Sort by nested property:
+Sort by nested property
+-------------------
 
 ```
 $people = $test->sort('owns->label');
 ```
 
-Find (if string field it's a regular expression):
+Find
+-------------------
+If the property you're searching is a string, the search rule will be treated as a regular expression
 
 ```
 $test->where('name','Anna');
@@ -45,7 +46,9 @@ $people = $test->sort('name');
 
 ```
 
-Find alternative (regular expression). Any name starting a or b:
+Find alternative
+-------------------
+More obvious regular expression. Any name starting a or b:
 
 ```
 $test->where('name','^[AaBb](.*)$');
@@ -55,7 +58,9 @@ $people = $test->sort('name');
 
 ```
 
-Find in nested properties (uses object notation, even if it's an array):
+Find in nested properties
+-------------------
+This uses object notation to drill into the data. Works on arrays and objects.
 
 ```
 $test->where('owns->type','furniture');
@@ -65,7 +70,9 @@ $people = $test->sort('name');
 
 ```
 
-Numeric find:
+Numeric find
+-------------------
+
 
 ```
 $test->where('age','> 20');
@@ -75,7 +82,9 @@ $people = $test->sort('age');
 
 ```
 
-Multiple find criteria. These are treated as 'and', not 'or':
+Multiple find criteria
+-------------------
+These are treated as 'and', not 'or', so where Rule #1 AND where rule #2
 
 ```
 $test->where('age','> 15');
@@ -86,7 +95,8 @@ $people = $test->sort('name');
 
 ```
 
-Find out how many returned:
+Count results
+-------------------
 
 ```
 $test->where('age','> 15');
@@ -97,7 +107,9 @@ echo $test->length();
 
 ```
 
-Iterate over results:
+Full example
+-------------------
+Shows querying teh data and iterating over results
 
 ```
 require_once("DataList.php");
