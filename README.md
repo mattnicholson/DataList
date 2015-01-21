@@ -20,15 +20,16 @@ Basic Sort
 $people = $test->sort('name');
 ```
 
-Reverse
+Reverse Sort
 -------------------
 
 ```
 $people = $test->sort('name','DESC');
 ```
 
-Sort by nested property
+Nested Sort
 -------------------
+Sorts data based on values in nested properties.
 
 ```
 $people = $test->sort('owns->label');
@@ -36,6 +37,7 @@ $people = $test->sort('owns->label');
 
 Find
 -------------------
+Search the data, or filter by criteria.
 If the property you're searching is a string, the search rule will be treated as a regular expression
 
 ```
@@ -58,6 +60,18 @@ $people = $test->sort('name');
 
 ```
 
+Numeric find
+-------------------
+
+```
+$test->where('age','> 20');
+$test->find();
+
+$people = $test->sort('age');
+
+```
+
+
 Find in nested properties
 -------------------
 This uses object notation to drill into the data. Works on arrays and objects.
@@ -70,17 +84,7 @@ $people = $test->sort('name');
 
 ```
 
-Numeric find
--------------------
 
-
-```
-$test->where('age','> 20');
-$test->find();
-
-$people = $test->sort('age');
-
-```
 
 Multiple find criteria
 -------------------
@@ -109,7 +113,7 @@ echo $test->length();
 
 Full example
 -------------------
-Shows querying teh data and iterating over results
+Shows querying the data and iterating over results
 
 ```
 require_once("DataList.php");
