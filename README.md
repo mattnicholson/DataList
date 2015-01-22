@@ -99,6 +99,19 @@ $people = $test->sort('name');
 
 ```
 
+Collate
+-------------------
+Generate a basic array with only the data from teh specified property
+
+```
+$test->collate('ID'); // returns array e.g. array(3,19,30,52)  
+
+$test->sort('ID','DESC');
+$test->collate('ID'); // returns array e.g. array(52,30,19,3)
+
+
+```
+
 Count results
 -------------------
 

@@ -15,6 +15,7 @@ class DataList{
   
   public $list;
   public $sortable;
+  public $sorted;
   public $subset;
   public $wheres;
   
@@ -22,6 +23,7 @@ class DataList{
 	{
 		 $this->list = $list;
 		 $this->sortable = $list;
+		 $this->sorted = $list;
 		 $this->subset = array();
 		 $this->wheres = array();
 	}
@@ -111,6 +113,18 @@ class DataList{
   	
 	}
 	
+	function collate($prop=null){
+  	
+  	$collated = array();
+  	
+  	foreach($this->sorted as $item):
+  	  $collated[] = $this->getRawValue($item,$prop);
+  	endforeach;
+  	
+  	return $collated;
+  	
+	}
+	
 	function sort($props=null,$order='ASC'){
   	
   	$i = 0;
@@ -145,7 +159,9 @@ class DataList{
   	 break;
   	endswitch;
   	
-  	return $arr;
+  	$this->sorted = $arr;
+  	
+  	return $this->sorted;
   	
   	
 	}
